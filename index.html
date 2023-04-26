@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="./css/stylesheet.css">
+</head>
+
+<body>
+  
+
+  <div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">WelCome To EDC</div>
+    <div class="inputs">
+      <label>Amount of Usage:</label> 
+      <input type="number" placeholder="Input Amount of Usage KWH" id="usage"/>
+      <label>Total Payment Riels:</label>
+      <input type="text" placeholder="Payment In Riels" readonly id="riels"/>
+      <label>Total Payment In Dolars:</label>
+      <input type="text" placeholder="Payment In Riels" readonly id="dollars"/>
+      <button type="submit" onclick="Cal()">Calculated</button>
+    </div>
+  
+  </div>
+
+
+</body>
+<script>
+  function Cal(){
+    var x = parseFloat(document.getElementById("usage").value);
+    var r = 0;
+    var d = 0;
+    if(x<=50){
+        r = x *500;
+    }else if (x<=100){
+       r = x * 1000;
+    }else if(x<=150){
+      r = x * 1500;
+    }else{
+      r = x * 2000;
+    }
+    d = r /4000;
+    document.getElementById("riels").value = r.toFixed(2) + "Riels";
+    document.getElementById("dollars").value = d.toLocaleString('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+  }
+</script>
+
+</html>
